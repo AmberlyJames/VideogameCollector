@@ -1,0 +1,22 @@
+package videogame.collector.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class Videogame {
+	
+	private Long videogameId;
+	
+	private String videogameName;
+	
+	private Studio studio;
+	
+	private Set<Console> consoles = new HashSet<>();
+	
+	private Set<Genre> genres = new HashSet<>();
+}

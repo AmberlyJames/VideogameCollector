@@ -1,0 +1,5 @@
+package videogame.collector.entity;
+
+public class Genre {
+
+}

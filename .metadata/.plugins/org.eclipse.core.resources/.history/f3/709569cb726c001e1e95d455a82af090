@@ -1,0 +1,5 @@
+package videogame.collector.controller;
+
+public class VideogameCollectorController {
+
+}

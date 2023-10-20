@@ -1,0 +1,5 @@
+package videogame.collector.service;
+
+public class VideogameService {
+
+}

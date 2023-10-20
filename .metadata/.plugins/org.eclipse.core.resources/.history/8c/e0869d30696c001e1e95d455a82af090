@@ -1,0 +1,5 @@
+spring:
+   datasource:
+      username: videogame_collector
+      password: videogame_collector
+      url: jdbc:mysql://localhost:3306/videogame_collector

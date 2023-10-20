@@ -1,0 +1,5 @@
+1697494796894	Rename method 'insertStudio'
+1697495297291	Extract method 'findOrCreateStudio'
+1697734747454	Extract method 'findOrCreateConsole'
+1697740157543	Rename type 'genreDao'
+1697818305231	Rename resource 'Screenshot 2023-10-20 110948.png'

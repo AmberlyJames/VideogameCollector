@@ -1,0 +1,20 @@
+package videogame.collector.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import lombok.Data;
+
+@Data
+@Entity
+public class Console {
+	
+	private Long consoleId;
+	
+	private String consoleName;
+	
+	@ManyToMany(mappedBy = "consoles")
+	private Set<Videogame> videogames = new HashSet<>();
+}

@@ -1,0 +1,50 @@
+package videogame.collector.service;
+
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import videogame.collector.controller.model.StudioData;
+import videogame.collector.dao.StudioDao;
+import videogame.collector.entity.Studio;
+
+@Service
+public class VideogameService {
+	@Autowired
+	private StudioDao studioDao;
+	
+	@Transactional(readOnly = false)
+	public StudioData saveStudio(StudioData studioData) {
+		Long studioId = studioData.getStudioId();
+		
+		Studio studio = findOrCreateStudio(studioId);
+		
+		setFieldsInStudio(studio, studioData);
+		
+		return new StudioData(studioDao.save(studio));
+	}
+
+	private void setFieldsInStudio(Studio studio, StudioData studioData) {
+		studio.setStudioName(studioData.getStudioName());
+		studio.setStudioEmail(studioData.getStudioEmail());
+	}
+
+	private Studio findOrCreateStudio(Long studioId) {
+		Studio studio;
+		if(Objects.isNull(studioId)) {
+			studio = new Studio();
+		} 
+		else {
+			studio = findStudioById(studioId);
+		}
+		return studio;
+	}
+
+	private Studio findStudioById(Long studioId) {
+		return studioDao.findById(studioId).orElseThrow(()-> new NoSuchElementException("Studio with ID=" + studioId + " was not found."));
+	}
+
+}

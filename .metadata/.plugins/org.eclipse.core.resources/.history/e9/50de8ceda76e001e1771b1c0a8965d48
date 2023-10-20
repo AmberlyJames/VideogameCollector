@@ -1,0 +1,23 @@
+package videogame.collector.controller.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import lombok.Data;
+import videogame.collector.entity.Console;
+import videogame.collector.entity.Genre;
+import videogame.collector.entity.Studio;
+
+@Data
+public class VideogameData {
+	
+	private Long videogameId;
+
+	private String videogameName;
+
+	private Studio studio;
+	
+	private Set<Console> consoles = new HashSet<>();
+
+	private Set<Genre> genres = new HashSet<>();
+}
