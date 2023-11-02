@@ -29,7 +29,7 @@ public class Studio {
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy = "studioId", cascade = CascadeType.ALL)	//use java object to map
+	@OneToMany(mappedBy = "gameStudioId", cascade = CascadeType.ALL)	//use java object to map
 	private Set<Videogame> videogames = new HashSet<>();
 	
 	

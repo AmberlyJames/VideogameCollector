@@ -7,36 +7,34 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import videogame.collector.entity.Console;
 import videogame.collector.entity.Genre;
-import videogame.collector.entity.Studio;
+//import videogame.collector.entity.Studio;
 import videogame.collector.entity.Videogame;
 
 @Data
 @NoArgsConstructor
 public class VideogameData {
 	
-
-
 	private Long videogameId;
 
 	private String videogameName;
 
-	private Studio studioId;
+	private StudioData studioIdentity;					
 	
-	private Set<ConsoleData> consoles = new HashSet<>();
+	private Set<String> consoles = new HashSet<>();
 
-	private Set<GenreData> genres = new HashSet<>();
+	private Set<String> genres = new HashSet<>();
 	
 	
 	public VideogameData(Videogame videogame) {
-		this.videogameId = videogame.getVideogameId();
-		this.videogameName = videogame.getVideogameName();
-		this.studioId = videogame.getStudioId();
+		videogameId = videogame.getVideogameId();
+		videogameName = videogame.getVideogameName();
+		studioIdentity = new StudioData(videogame.getGameStudioId());				
 		
 		for (Console console : videogame.getConsoles()) {
-			this.consoles.add(new ConsoleData(console));
+			consoles.add(console.getConsoleName());
 		}
 		for (Genre genre : videogame.getGenres()) {
-			this.genres.add(new GenreData(genre));
+			genres.add(genre.getGenreName());
 		}
 	}
 }

@@ -1,7 +1,0 @@
-package videogame.collector.dao;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface genreDao extends JpaRepository<Genre, Long> {
-
-}

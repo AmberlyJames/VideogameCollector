@@ -1,0 +1,124 @@
+package videogame.collector.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import videogame.collector.controller.model.ConsoleData;
+import videogame.collector.controller.model.GenreData;
+import videogame.collector.controller.model.StudioData;
+import videogame.collector.controller.model.VideogameData;
+import videogame.collector.service.VideogameService;
+
+@Slf4j
+@RestController
+@RequestMapping("/videogame_collector")
+public class VideogameCollectorController {
+	@Autowired
+	private VideogameService videogameService;
+	
+//**********************************Videogame Entity HTTP Methods********************************************
+	@PostMapping("/studio/{studioId}/videogame")
+	public VideogameData insertVideogame(@PathVariable Long studioId, @RequestBody VideogameData videogameData) {	
+		log.info("Creating videogame {}", videogameData);
+		return videogameService.saveVideoGame(studioId, videogameData);
+	}
+	
+	//seems to ignore the studioId variable and only pay attention to the videogameId
+	@GetMapping("/studio/{studioId}/videogame/{videogameId}")
+	public VideogameData retrieveVideogameById(@PathVariable Long studioId, @PathVariable Long videogameId) {
+		log.info("Retrieving videogame with ID={}", videogameId);
+		return videogameService.retrieveVideogameById(videogameId);
+	}
+	@GetMapping("/studio/{studioId}/videogame")
+	public List<VideogameData> retrieveAllVideogamesFromStudio(@PathVariable Long studioId){
+		log.info("Retrieving all videogames.");
+		return videogameService.retrieveAllVideogamesInStudio(studioId);
+	}
+	
+	// needs fixed. error 404 not found. says studioId not found, and points to videogameId value
+	@PutMapping("/studio/{studioId}/videogame/{videogameId}")
+	public VideogameData updateVideogame(@PathVariable Long studioId, @PathVariable Long videogameId, @RequestBody VideogameData videogameData) {
+		videogameData.setVideogameId(videogameId);
+		
+		log.info("Updating videogame {}", videogameData);
+		
+		return videogameService.saveVideoGame(videogameId, videogameData);
+	}
+	
+	@DeleteMapping("/studio/{studioId}/videogame")
+	public void deleteAllVideogames(@PathVariable Long studioId) {
+		log.info("Attempting to delete all videogames.");
+		throw new UnsupportedOperationException("Deleting all videogames is not allowed.");
+	}
+	@DeleteMapping("/studio/{studioId}/videogame/{videogameId}")
+	public Map<String, String> deleteVideogameById(@PathVariable Long studioId, @PathVariable Long videogameId){
+		log.info("Deleting videogame with ID={}", videogameId);
+		
+		videogameService.deleteVideogameById(videogameId);
+		
+		return Map.of("message", "Deletion of videogame with ID=" + videogameId + " was successful.");
+	}
+	
+//*********************************Studio Entity HTTP Methods*******************************************
+	
+	
+	
+	@PostMapping("/studio")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public StudioData insertStudio(@RequestBody StudioData studioData) {
+		log.info("Creating Studio {}", studioData);
+		return videogameService.saveStudio(studioData);
+	}
+	@PutMapping("/studio/{studioId}")
+	public StudioData updateStudio(@PathVariable Long studioId, @RequestBody StudioData studioData) {
+		studioData.setStudioId(studioId);
+		log.info("Updating studio with ID={}", studioId);
+		return videogameService.saveStudio(studioData);
+	}
+	@GetMapping("/studio/{studioId}")
+	public StudioData retrieveStudioById(@PathVariable Long studioId) {
+		log.info("Retrieving Studio with ID={}", studioId);
+		return videogameService.retrieveStudioById(studioId);
+	}
+	
+	@GetMapping("/studio")
+	public List<StudioData> retrieveAllStudios() {
+		log.info("Retrieving all studios.");
+		return videogameService.retrieveAllStudios();
+	}
+	
+	
+//**********************************Console Entity HTTP Methods************************************************	
+	@PostMapping("/console")														
+	public ConsoleData insertConsole(@RequestBody ConsoleData consoleData) {
+		log.info("Creating console {}", consoleData);
+		return videogameService.saveConsole(consoleData);
+	}
+	@GetMapping("/console")
+	public List<ConsoleData> retrieveAllConsoles() {
+		log.info("Retrieving all Consoles.");
+		return videogameService.retrieveAllConsoles();
+	}
+	
+//***********************************Genre Entity HTTP Methods*************************************************
+	@PostMapping("/genre")
+	public GenreData insertGenre(@RequestBody GenreData genreData) {		
+		log.info("Creating genre {}", genreData);
+		return videogameService.saveGenre(genreData);
+	}
+	
+
+
+}

@@ -1,0 +1,26 @@
+package videogame.collector.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
+
+import videogame.collector.VideogameCollectorApplication;
+
+
+@SpringBootTest(webEnvironment = WebEnvironment.NONE, classes = VideogameCollectorApplication.class)
+@ActiveProfiles("test")
+@Sql(scripts = {"classpath:schema.sql", "classpath:data.sql"})
+@SqlConfig(encoding = "utf-8")
+class CollectorControllerTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
