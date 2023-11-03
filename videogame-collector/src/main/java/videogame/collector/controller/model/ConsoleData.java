@@ -23,5 +23,5 @@ public class ConsoleData {
 //			this.videogames.add(new VideogameData(videogame));
 //		}
 	}
-
+	//I left the recursive code commented out to remind myself of this mistake for any future projects
 }

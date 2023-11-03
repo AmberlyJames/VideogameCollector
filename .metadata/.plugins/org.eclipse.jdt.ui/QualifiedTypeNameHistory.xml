@@ -22,11 +22,9 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="java.util.Objects"/>
-    <fullyQualifiedTypeName name="videogame.collector.controller.model.ConsoleData"/>
     <fullyQualifiedTypeName name="videogame.collector.entity.Console"/>
     <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
-    <fullyQualifiedTypeName name="videogame.collector.controller.model.GenreData"/>
     <fullyQualifiedTypeName name="videogame.collector.entity.Genre"/>
     <fullyQualifiedTypeName name="videogame.collector.controller.model.VideogameData"/>
     <fullyQualifiedTypeName name="videogame.collector.entity.Videogame"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.springframework.test.context.ActiveProfiles"/>
     <fullyQualifiedTypeName name="org.springframework.test.context.jdbc.Sql"/>
     <fullyQualifiedTypeName name="org.springframework.test.context.jdbc.SqlConfig"/>
+    <fullyQualifiedTypeName name="videogame.collector.controller.model.GenreData"/>
+    <fullyQualifiedTypeName name="videogame.collector.controller.model.ConsoleData"/>
 </qualifiedTypeNameHistroy>

@@ -11,5 +11,6 @@ C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\vide
 C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\entity\Studio.java
 C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\service\VideogameService.java
 C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\controller\VideogameCollectorController.java
+C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\controller\error\GlobalControllerErrorHandler.java
 C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\controller\model\GenreData.java
 C:\Users\amber\eclipse-VideoGameCollector\videogame-collector\src\main\java\videogame\collector\dao\VideogameDao.java

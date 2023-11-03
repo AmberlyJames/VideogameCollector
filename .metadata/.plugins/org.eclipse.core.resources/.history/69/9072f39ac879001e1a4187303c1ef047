@@ -1,0 +1,14 @@
+package videogame.collector.dao;
+
+import java.util.Set;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import videogame.collector.controller.model.ConsoleData;
+import videogame.collector.entity.Console;
+
+public interface ConsoleDao extends JpaRepository<Console, Long> {
+
+	Set<Console> findAllByConsoleNameIn(Set<ConsoleData> consoles);
+
+}

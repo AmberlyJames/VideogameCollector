@@ -217,9 +217,9 @@ public class VideogameService {
 		videogame.setGameStudioId(studio);
 		studio.getVideogames().add(videogame);
 		
-		for(Console console : consoles) {
-			console.getVideogames().add(videogame);
-			videogame.getConsoles().add(console);
+		for(Console console : consoles) {						//for each console found in videogameData
+			console.getVideogames().add(videogame);				//add the videogame to that console's videogames
+			videogame.getConsoles().add(console);				//add the console to the videogame's consoles
 		}
 		for(Genre genre : genres) {
 			genre.getVideogames().add(videogame);
@@ -253,7 +253,6 @@ public class VideogameService {
 	@Transactional(readOnly = true)
 	public List<VideogameData> retrieveAllVideogamesInStudio(Long studioId) {
 		Studio studio = findStudioById(studioId);
-//		List<Videogame> videogames = videogameDao.findAll();
 		List<VideogameData> response = new LinkedList<>();
 		
 		for(Videogame videogame : studio.getVideogames()) {
